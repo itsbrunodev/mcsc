@@ -21,7 +21,7 @@ export default function Version({ versions }: { versions: string[] }) {
         </Link>{" "}
         should be the same when connecting to a server. Though there are{" "}
         <Link
-          href="https://github.com/ViaVersion/ViaVersion/blob/master/README.md"
+          href="https://github.com/ViaVersion/ViaVersion#readme"
           target="_blank"
         >
           exceptions
