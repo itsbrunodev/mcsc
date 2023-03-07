@@ -1,8 +1,8 @@
-import admZIP from "adm-zip";
+import jsZIP from "jszip";
 import { IProjectBuilds } from "../../../../types";
 
 export async function POST(request: Request) {
-  const zip = new admZIP();
+  const zip = new jsZIP();
 
   const body: {
     version: string;
@@ -86,13 +86,13 @@ max-world-size=29999984
   const serverJar = await fetch(
     `https://api.papermc.io/v2/projects/paper/versions/${body.version}/builds/${latestBuild}/downloads/paper-${body.version}-${latestBuild}.jar`
   ).then((x) => x.arrayBuffer());
-  zip.addFile("server.jar", Buffer.from(serverJar));
+  zip.file("server.jar", Buffer.from(serverJar));
 
-  zip.addFile("eula.txt", Buffer.from("eula=true", "utf-8"));
-  zip.addFile("server.properties", Buffer.from(properties, "utf-8"));
+  zip.file("eula.txt", Buffer.from("eula=true", "utf-8"));
+  zip.file("server.properties", Buffer.from(properties, "utf-8"));
 
   /* for windows users */
-  zip.addFile(
+  zip.file(
     "start.bat",
     Buffer.from(
       `@echo off
@@ -105,7 +105,7 @@ java -Xmx${body.maxRam}M -Xms${body.minRam}M %FLAGS% -jar server.jar --nogui`,
   );
 
   /* for other users */
-  zip.addFile(
+  zip.file(
     "start.sh",
     Buffer.from(
       `#!/bin/bash
@@ -118,7 +118,7 @@ java -Xmx${body.maxRam} -Xms${body.minRam} \${FLAGS} -jar server.jar --nogui`,
     )
   );
 
-  const buffer = zip.toBuffer();
+  const buffer = await zip.generateAsync({ type: "nodebuffer" });
 
   const response = new Response(buffer);
 

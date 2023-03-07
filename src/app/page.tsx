@@ -1,7 +1,3 @@
-import Image from "next/image";
-import { Rubik } from "next/font/google";
-import Link from "next/link";
-
 import Version from "@/components/Version";
 import Players from "@/components/Players";
 import Ram from "@/components/Ram";
@@ -9,20 +5,20 @@ import Form from "@/components/Form";
 import EULA from "@/components/EULA";
 import PortForward from "@/components/PortForward";
 
-const rubik = Rubik({ subsets: ["latin"] });
-
 export default async function Home() {
-  /* get every available to download server versions from the paper api */
+  /* get every available to download server version from the paper api */
   const versions: string[] = await fetch(
     `${
       process.env.NODE_ENV === "development"
         ? "http://localhost:3000"
         : "https://mcsc.vercel.app"
     }/api/versions`
-  ).then(async (x) => await x.json());
+  )
+    .then(async (x) => await x.json())
+    .catch(() => []);
 
   return (
-    <main className={rubik.className}>
+    <main>
       <div className="flex flex-col max-w-[450px] w-full h-full space-y-8">
         <div className="flex flex-col w-full h-44 space-y-2 justify-center items-center">
           <h1 className="text-amber-400 font-semibold text-8xl">mcsc</h1>
@@ -48,8 +44,8 @@ export default async function Home() {
             <span className="underline">start.bat</span>; other users should run
             the file called <span className="underline">start.sh</span>.
           </p>
-          <button className="!mt-6 bg-amber-400 hover:bg-amber-300 w-fit mx-auto py-2 px-4 rounded-md text-zinc-900">
-            Download Files
+          <button className="!mt-6 bg-amber-400 hover:bg-amber-300 w-fit mx-auto py-1 px-3 rounded-md text-zinc-900">
+            Download
           </button>
         </Form>
       </div>
