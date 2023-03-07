@@ -1,91 +1,58 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
+import Image from "next/image";
+import { Rubik } from "next/font/google";
+import Link from "next/link";
 
-const inter = Inter({ subsets: ['latin'] })
+import Version from "@/components/Version";
+import Players from "@/components/Players";
+import Ram from "@/components/Ram";
+import Form from "@/components/Form";
+import EULA from "@/components/EULA";
+import PortForward from "@/components/PortForward";
 
-export default function Home() {
+const rubik = Rubik({ subsets: ["latin"] });
+
+export default async function Home() {
+  /* get every available to download server versions from the paper api */
+  const versions: string[] = await fetch(
+    `${
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3000"
+        : "https://mcsc.vercel.app"
+    }/api/versions`
+  ).then(async (x) => await x.json());
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
+    <main className={rubik.className}>
+      <div className="flex flex-col max-w-[450px] w-full h-full space-y-8">
+        <div className="flex flex-col w-full h-44 space-y-2 justify-center items-center">
+          <h1 className="text-amber-400 font-semibold text-8xl">mcsc</h1>
+          <p className="text-zinc-400 text-xl">
+            <span className="letter">M</span>ine
+            <span className="letter">C</span>raft{" "}
+            <span className="letter">S</span>erver{" "}
+            <span className="letter">C</span>reator
           </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+          <p className="text-zinc-500 text-sm">
+            A tool that makes creating Minecraft servers much easier and faster.
           </p>
-        </a>
+        </div>
+        <Form>
+          <Version versions={versions} />
+          <Players />
+          <Ram />
+          <EULA />
+          <PortForward />
+          <p className="text-zinc-500 text-sm">
+            <span className="text-amber-400 font-medium">Tip:</span> Windows
+            users should run the file called{" "}
+            <span className="underline">start.bat</span>; other users should run
+            the file called <span className="underline">start.sh</span>.
+          </p>
+          <button className="!mt-6 bg-amber-400 hover:bg-amber-300 w-fit mx-auto py-2 px-4 rounded-md text-zinc-900">
+            Download Files
+          </button>
+        </Form>
       </div>
     </main>
-  )
+  );
 }
