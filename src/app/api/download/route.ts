@@ -90,6 +90,13 @@ max-world-size=29999984
 
   zip.file("eula.txt", Buffer.from("eula=true", "utf-8"));
   zip.file("server.properties", Buffer.from(properties, "utf-8"));
+  zip.file(
+    "README.txt",
+    Buffer.from(
+      "Windows users should run the file called start.bat; other users should run the file called start.sh.\n\nYou can delete this file if you don't need it.",
+      "utf-8"
+    )
+  );
 
   /* for windows users */
   zip.file(

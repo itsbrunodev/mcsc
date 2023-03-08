@@ -43,10 +43,17 @@ export default async function Home() {
           <PortForward />
           <EULA />
           <p className="text-zinc-500 text-sm">
-            <span className="text-amber-400 font-medium">Tip:</span> Windows
-            users should run the file called{" "}
-            <span className="underline">start.bat</span>; other users should run
-            the file called <span className="underline">start.sh</span>.
+            <span className="text-amber-400 font-medium">Note:</span> In order
+            to run a Minecraft Java Edition server, you need to have the Java
+            runtime installed on your computer. If you don&apos;t have it, you
+            can download the installer{" "}
+            <Link
+              href="https://www.oracle.com/java/technologies/downloads/#java17"
+              target="_blank"
+            >
+              from here
+            </Link>
+            .
           </p>
           <button className="!mt-6 bg-amber-400 hover:bg-amber-300 w-fit mx-auto py-2 px-4 rounded-md text-zinc-900">
             Download
