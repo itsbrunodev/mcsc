@@ -18,21 +18,16 @@ body {
 
 @layer base {
   body {
-    @apply text-zinc-100;
-    @apply bg-zinc-900;
+    @apply text-zinc-100 bg-zinc-900;
   }
 
   .letter {
-    @apply text-amber-400;
-    @apply font-medium;
+    @apply text-amber-400 font-medium;
   }
 
   input,
   select {
-    @apply rounded-md;
-    @apply !py-1;
-    @apply !px-2;
-    @apply w-fit;
+    @apply rounded-md !py-1 !px-2 w-fit bg-zinc-700;
   }
 
   a:hover {

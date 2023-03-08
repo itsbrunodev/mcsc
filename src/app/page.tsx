@@ -1,13 +1,13 @@
+import Image from "next/image";
+import Link from "next/link";
+
 import Version from "@/components/Version";
 import Players from "@/components/Players";
 import Ram from "@/components/Ram";
 import Form from "@/components/Form";
 import EULA from "@/components/EULA";
 import PortForward from "@/components/PortForward";
-
 import github from "@/assets/github.svg";
-import Image from "next/image";
-import Link from "next/link";
 
 export default async function Home() {
   /* get every available to download server version from the paper api */
@@ -23,7 +23,7 @@ export default async function Home() {
 
   return (
     <main>
-      <div className="flex flex-col max-w-[450px] w-full h-full space-y-8 relative">
+      <div className="flex flex-col max-w-[450px] w-full px-1 h-full space-y-8 relative">
         <div className="flex flex-col w-full h-44 space-y-2 justify-center items-center">
           <h1 className="text-amber-400 font-semibold text-8xl">mcsc</h1>
           <p className="text-zinc-400 text-xl">
@@ -40,8 +40,8 @@ export default async function Home() {
           <Version versions={versions} />
           <Players />
           <Ram />
-          <EULA />
           <PortForward />
+          <EULA />
           <p className="text-zinc-500 text-sm">
             <span className="text-amber-400 font-medium">Tip:</span> Windows
             users should run the file called{" "}

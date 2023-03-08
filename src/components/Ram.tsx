@@ -15,7 +15,7 @@ export default function Ram() {
         </Link>
         .
       </p>
-      <div className="w-full space-x-1">
+      <div className="w-full md:space-x-1 md:space-y-0 space-y-2 flex md:flex-row flex-col">
         <input
           required
           name="minRam"
