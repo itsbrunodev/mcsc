@@ -23,7 +23,7 @@ export default async function Home() {
 
   return (
     <main>
-      <div className="flex flex-col max-w-[450px] w-full px-1 h-full space-y-8 relative">
+      <div className="flex flex-col max-w-[450px] w-full md:px-0 px-2 h-full space-y-8 relative">
         <div className="flex flex-col w-full h-44 space-y-2 justify-center items-center">
           <h1 className="text-amber-400 font-semibold text-8xl">mcsc</h1>
           <p className="text-zinc-400 text-xl">
@@ -52,7 +52,7 @@ export default async function Home() {
             Download
           </button>
         </Form>
-        <div className="absolute top-3 right-0 !mt-0">
+        <div className="absolute top-3 md:right-0 right-2 !mt-0">
           <Link href="https://github.com/brunolepis/mcsc" target="_blank">
             <Image
               src={github}
