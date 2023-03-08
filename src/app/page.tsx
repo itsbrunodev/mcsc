@@ -48,7 +48,7 @@ export default async function Home() {
             <span className="underline">start.bat</span>; other users should run
             the file called <span className="underline">start.sh</span>.
           </p>
-          <button className="!mt-6 bg-amber-400 hover:bg-amber-300 w-fit mx-auto py-1 px-3 rounded-md text-zinc-900">
+          <button className="!mt-6 bg-amber-400 hover:bg-amber-300 w-fit mx-auto py-2 px-4 rounded-md text-zinc-900">
             Download
           </button>
         </Form>
