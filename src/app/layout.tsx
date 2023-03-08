@@ -16,7 +16,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={rubik.className}>{children}</body>
+      <body className={rubik.className}>
+        <main>
+          <div className="flex flex-col max-w-[450px] w-full md:px-0 px-2 h-full space-y-6 relative">
+            {children}
+          </div>
+        </main>
+      </body>
     </html>
   );
 }
