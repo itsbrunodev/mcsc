@@ -21,7 +21,7 @@ export default async function Home() {
   )
     .then(async (x) => await x.json())
     .catch(() => {
-      throw "Couldn't retrieve server versions.";
+      return [];
     });
 
   return (

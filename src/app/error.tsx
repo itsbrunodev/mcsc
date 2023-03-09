@@ -22,8 +22,7 @@ export default function Error({ error }: { error: Error }) {
           <path d="M12 9v4"></path>
           <path d="M12 16v.01"></path>
         </svg>
-        <p>{error.message.replace(/Error: /, "")}</p>
-        <p>{error.stack}</p>
+        <p className="max-w-sm">{error.message.replace(/Error: /, "")}</p>
       </div>
     </>
   );
