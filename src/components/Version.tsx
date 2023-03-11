@@ -1,6 +1,26 @@
+"use client";
+
+import { use } from "react";
 import Link from "next/link";
 
-export default function Version({ versions }: { versions: string[] }) {
+async function getVersions() {
+  return (await fetch(
+    `${
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3000"
+        : "https://mcsc.vercel.app"
+    }/api/versions`
+  )
+    .then(async (x) => await x.json())
+    .catch(() => {
+      return [];
+    })) as string[];
+}
+
+export default function Version() {
+  /* get every available to download server version from the paper api */
+  const versions = use(getVersions());
+
   return (
     <div className="flex flex-col space-y-1">
       <label>Server Version</label>

@@ -11,24 +11,11 @@ import github from "@/assets/github.svg";
 import Header from "@/components/Header";
 
 export default async function Home() {
-  /* get every available to download server version from the paper api */
-  const versions: string[] = await fetch(
-    `${
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:3000"
-        : "https://mcsc.vercel.app"
-    }/api/versions`
-  )
-    .then(async (x) => await x.json())
-    .catch(() => {
-      return [];
-    });
-
   return (
     <>
       <Header />
       <Form>
-        <Version versions={versions} />
+        <Version />
         <Players />
         <Ram />
         <PortForward />
