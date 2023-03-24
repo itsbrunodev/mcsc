@@ -2,10 +2,15 @@
 
 A tool that makes creating Minecraft servers much easier and faster.
 
-### Supported Server Types
+### Supported server types
 
-Currently, only Paper servers are supported, but Spigot and Vanilla support are planned. 
+Only [Paper](https://papermc.io/) servers are supported right now.\
+Support for [Vanilla](https://www.minecraft.net/en-us/download/server), [Spigot](https://spigotmc.org/) and Modded servers will come later.
 
-### How does this work?
+### How it works
 
-It's pretty simple: the website fetches every available server version from the Paper API, then after you press the download button, MCSC downloads the jar file of the version you have selected and bundles every file (server.jar, eula.txt, server.properties, README.txt, start.bat, and start.sh) into a zip file and then you download it.
+1. Fetch every downloadable server version.
+2. You configure your server.
+3. You press the download button.
+4. The server.jar and the other required files are bundled into a zip file.
+5. You download the zip file.
