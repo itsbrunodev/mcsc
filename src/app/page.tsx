@@ -7,8 +7,8 @@ import Ram from "@/components/Ram";
 import Form from "@/components/Form";
 import EULA from "@/components/EULA";
 import PortForward from "@/components/PortForward";
-import github from "@/assets/github.svg";
 import Header from "@/components/Header";
+import github from "@/assets/github.svg";
 
 export default async function Home() {
   return (

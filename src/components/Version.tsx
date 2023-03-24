@@ -6,7 +6,9 @@ import Link from "next/link";
 import { IProject } from "../../types";
 
 async function getVersions() {
-  return (await fetch("https://api.papermc.io/v2/projects/paper")
+  return (await fetch("https://api.papermc.io/v2/projects/paper", {
+    cache: "no-cache",
+  })
     .then(async (x) => ((await x.json()) as IProject).versions.reverse())
     .catch(() => {
       return [];
