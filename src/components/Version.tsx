@@ -44,6 +44,13 @@ export default function Version() {
         >
           exceptions
         </Link>
+        . If your server is having performance-related issues, then consider{" "}
+        <Link
+          href="https://github.com/YouHaveTrouble/minecraft-optimization#readme"
+          target="_blank"
+        >
+          reading this
+        </Link>
         .
       </p>
       <select required name="version">
